@@ -1,0 +1,32 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+          "Effect": "Allow",
+          "Action": [
+            "ec2:DescribeNetworkInterfaces",
+            "ec2:CreateNetworkInterface",
+            "ec2:DeleteNetworkInterface",
+            "ec2:DescribeInstances",
+            "ec2:AttachNetworkInterface"
+        ],
+          "Resource": "*"
+      },
+      {
+        "Effect": "Allow",
+        "Action": [
+            "secretsmanager:GetSecretValue"
+        ],
+        "Resource": "arn:aws:secretsmanager:moon-backside-1:00011112222:secret:xxx"
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "cognito-identity:*",
+        "cognito-idp:*",
+        "cognito-sync:*"
+    ],
+      "Resource": "arn:aws:cognito-idp:moon-backside-1:00011112222:userpool/moon-backside-1_xxx"
+  }
+]
+}

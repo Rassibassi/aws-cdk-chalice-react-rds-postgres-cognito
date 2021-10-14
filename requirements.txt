@@ -1,0 +1,3 @@
+-r infrastructure/requirements.txt
+-r backend/requirements.txt
+-r backend/requirements-dev.txt

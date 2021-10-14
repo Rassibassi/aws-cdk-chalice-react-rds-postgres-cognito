@@ -1,0 +1,37 @@
+FROM node:14.17.0-buster
+
+WORKDIR /usr/src/app
+
+COPY .env .
+COPY .env.development.local .
+COPY package.json .
+COPY yarn.lock .
+RUN yarn --pure-lockfile
+RUN yarn global add react-scripts@4.0.3
+
+CMD ["yarn", "start"]
+
+FROM node:16-alpine as builder
+
+WORKDIR /usr/src/app
+
+ENV PATH /usr/src/app/node_modules/.bin:$PATH
+
+COPY .env .
+COPY .env.production.local .
+COPY package.json .
+COPY yarn.lock .
+RUN yarn --pure-lockfile
+RUN yarn add react-scripts@4.0.3
+
+# set environment variables
+ARG NODE_ENV=production
+ENV NODE_ENV $NODE_ENV
+
+# create build
+COPY . .
+RUN yarn run build
+
+
+FROM scratch AS export-stage
+COPY --from=builder /usr/src/app/build build

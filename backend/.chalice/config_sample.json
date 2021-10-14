@@ -1,0 +1,29 @@
+{
+  "version": "2.0",
+  "app_name": "sampleapp",
+  "environment_variables": {
+    "COGNITO_ARN": "arn:aws:cognito-idp:moon-backside-1:000:userpool/moon-backside-1_xxx"
+  },
+  "stages": {
+    "dev": {
+      "api_gateway_stage": "api",
+      "autogen_policy": false,
+      "iam_policy_file": "policy.json",
+      "environment_variables": {
+        "CHALICE_STAGE": "development",
+        "DATABASE_URL": "postgresql://postgres:postgres@api-db:5432/api_dev"
+      }
+    },
+    "prod": {
+      "api_gateway_stage": "api",
+      "subnet_ids": ["xxx", "xxx"],
+      "security_group_ids": ["xxx"],
+      "autogen_policy": false,
+      "iam_policy_file": "policy.json",
+      "environment_variables": {
+        "CHALICE_STAGE": "production",
+        "DATABASE_SECRET_NAME": "xxx"
+      }
+    }
+  }
+}

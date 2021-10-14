@@ -2,4 +2,4 @@
 .chalice/deployments/
 .chalice/venv/
 .chalice/config.json
-.chalice/ploicy.json
+.chalice/policy.json
