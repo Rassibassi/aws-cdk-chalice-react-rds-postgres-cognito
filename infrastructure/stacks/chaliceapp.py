@@ -20,7 +20,7 @@ class ChaliceApp(cdk.Stack):
         self.secret = secretsmanager.Secret(
             self,
             "Secret",
-            secret_name="exampleapp-credentials", # DATABASE_SECRET_NAME
+            secret_name="sampleapp-credentials", # DATABASE_SECRET_NAME
             generate_secret_string=secretsmanager.SecretStringGenerator(
                 secret_string_template=json.dumps(
                     {
@@ -57,7 +57,7 @@ class ChaliceApp(cdk.Stack):
         self.security_group = ec2.SecurityGroup(
             self,
             "SecurityGroup",
-            security_group_name="exampleapp-securitygroup",
+            security_group_name="sampleapp-securitygroup",
             vpc=self.vpc,
         )
 
