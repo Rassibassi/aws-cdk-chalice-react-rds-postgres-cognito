@@ -61,3 +61,16 @@ def pong():
         "status": "success",
         "message": "Authorized pong!",
     }
+
+@app.lambda_function(name="post_authentication_create_user")
+def post_authentication_create_user(event, context):
+    """
+        Set cognito post authentication trigger to chalice lambda function:
+        ```
+            aws cognito-idp update-user-pool \
+            --user-pool-id xxx \
+            --lambda-config PostAuthentication=arn:aws:lambda:xxx:xxx:function:sampleapp-prod-post_authentication_create_user
+        ```
+    """
+    create_user(username)
+    return event
