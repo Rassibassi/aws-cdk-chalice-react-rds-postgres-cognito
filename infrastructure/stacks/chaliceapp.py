@@ -108,3 +108,7 @@ class ChaliceApp(cdk.Stack):
             "RDS Endpoint Port",
             value=self.database_instance.db_instance_endpoint_port,
         )
+        cdk.CfnOutput(self, "VPC ID", value=self.vpc.vpc_id)
+        cdk.CfnOutput(self, "Private Subnet 1", value=self.vpc.private_subnets[0].subnet_id)
+        cdk.CfnOutput(self, "Private Subnet 2", value=self.vpc.private_subnets[1].subnet_id)
+        cdk.CfnOutput(self, "Security Group ID", value=self.security_group.security_group_id)
